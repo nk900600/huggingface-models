@@ -31,7 +31,8 @@ from constant import (PERSIST_DIRECTORY, DOC_DIR, MODEL_PATH, MODEL_PATH_VM, EMB
 # Load environment variables
 persist_directory = PERSIST_DIRECTORY
 source_directory = DOC_DIR
-embeddings_model_name = EMBEDDINGS_MODEL_NAME
+# embeddings_model_name = EMBEDDINGS_MODEL_NAME
+embeddings_model_name = EMBEDDINGS_MODEL_NAME_VM
 chunk_size = 500
 chunk_overlap = 50
 
