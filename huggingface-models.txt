@@ -1,0 +1,3 @@
+TheBloke/vicuna-7B-1.1-HF -- LlamaForCausalLM
+ai-forever/mGP
+google/flan-t5-small

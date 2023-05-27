@@ -5,6 +5,7 @@ MODEL_TYPE_VM="huggingface"
 MODEL_PATH="models/ggml-gpt4all-j-v1.3-groovy.bin"
 # MODEL_PATH_VM="./models/mpt-7b/"
 MODEL_PATH_VM="ai-forever/mGPT"
+MODEL_NAME_VM= "deepset/roberta-base-squad2" #"ai-forever/mGPT"  #
 EMBEDDINGS_MODEL_NAME="all-MiniLM-L6-v2"
 EMBEDDINGS_MODEL_NAME_VM="hkunlp/instructor-xl"
 MODEL_N_CTX="1000"
@@ -15,3 +16,6 @@ CHROMA_SETTINGS = Settings(
         persist_directory=PERSIST_DIRECTORY,
         anonymized_telemetry=False
 )
+
+
+#TheBloke/vicuna-7B-1.1-HF

@@ -18,3 +18,5 @@ InstructorEmbedding
 llama_index
 transformers
 einops
+accelerate 
+xformers
