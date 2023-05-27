@@ -28,32 +28,33 @@ model_name = MODEL_NAME_VM
 
 MODEL_PARAMS_MAPPING = {
 
-    "google/flan-t5-small": {"task":"text2text-generation", "token": T5Tokenizer, "llm": T5ForConditionalGeneration #LlamaForCausalLM  # T5ForConditionalGeneration
-                             },
     "deepset/roberta-base-squad2" :{"task":"question-answering", 
                                     "token": AutoTokenizer, 
                                     "llm": AutoModelForQuestionAnswering 
-                                    #LlamaForCausalLM  # T5ForConditionalGeneration
+                             },
+    "google/flan-t5-small" :{"task":"text2text-generation", 
+                                    "token": T5Tokenizer, 
+                                    "llm": T5ForConditionalGeneration 
+                             },
+    "google/flan-t5-large" :{"task":"text2text-generation", 
+                                    "token": T5Tokenizer, 
+                                    "llm": T5ForConditionalGeneration 
                              },
     "bigscience/bloom-560m" :{"task":"text-generation", 
                                     "token": AutoTokenizer, 
                                     "llm": BloomForCausalLM 
-                                    #LlamaForCausalLM  # T5ForConditionalGeneration
                              },
     "gpt2" :{"task":"text-generation", 
                                     "token": AutoTokenizer, 
                                     "llm": BloomForCausalLM 
-                                    #LlamaForCausalLM  # T5ForConditionalGeneration
                              },
     "gpt2-large" :{"task":"text-generation", 
                                     "token": GPT2Tokenizer, 
                                     "llm": AutoModelForCausalLM 
-                                    #LlamaForCausalLM  # T5ForConditionalGeneration
                              },
     "EleutherAI/gpt-neo-1.3B" :{"task":"text-generation", 
                                     "token": GPT2Tokenizer, 
                                     "llm": GPTNeoForCausalLM 
-                                    #LlamaForCausalLM  # T5ForConditionalGeneration
                              },
 
 }
