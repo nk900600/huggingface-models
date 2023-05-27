@@ -4,7 +4,7 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.vectorstores import Chroma
 from langchain.llms import GPT4All, LlamaCpp
-from transformers import LlamaTokenizer, T5Tokenizer, AutoTokenizer,GPT2Tokenizer,AutoModelForQuestionAnswering,BloomForCausalLM, T5ForConditionalGeneration, LlamaForCausalLM, GenerationConfig, pipeline, AutoModel, AutoModelForCausalLM
+from transformers import LlamaTokenizer, T5Tokenizer, AutoTokenizer,GPT2Tokenizer,GPTNeoForCausalLM,AutoModelForQuestionAnswering,BloomForCausalLM, T5ForConditionalGeneration, LlamaForCausalLM, GenerationConfig, pipeline, AutoModel, AutoModelForCausalLM
 
 import os
 import argparse
@@ -48,6 +48,11 @@ MODEL_PARAMS_MAPPING = {
     "gpt2-large" :{"task":"text-generation", 
                                     "token": GPT2Tokenizer, 
                                     "llm": AutoModelForCausalLM 
+                                    #LlamaForCausalLM  # T5ForConditionalGeneration
+                             },
+    "EleutherAI/gpt-neo-1.3B" :{"task":"text-generation", 
+                                    "token": GPT2Tokenizer, 
+                                    "llm": GPTNeoForCausalLM 
                                     #LlamaForCausalLM  # T5ForConditionalGeneration
                              },
 
