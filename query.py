@@ -128,10 +128,10 @@ def load_model():
        MODEL_PARAMS_MAPPING[model_name]["task"],
         model=model,
         tokenizer=tokenizer,
-        # max_length=2048,
-        # temperature=0,
-        # top_p=0.95,
-        # repetition_penalty=1.15
+        max_length=2048,
+        temperature=0,
+        top_p=0.95,
+        repetition_penalty=1.15
     )
 
     local_llm = HuggingFacePipeline(pipeline=pipe)
