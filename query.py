@@ -10,8 +10,10 @@ from constant import (MODEL_TYPE, MODEL_TYPE_VM, PERSIST_DIRECTORY, DOC_DIR, MOD
 import pdb
 from langchain import HuggingFaceHub
 from transformers import AutoModel
+import transformers
 # mosaicml/mpt-7b
 embeddings_model_name =EMBEDDINGS_MODEL_NAME_VM
+# embeddings_model_name =EMBEDDINGS_MODEL_NAME
 persist_directory = PERSIST_DIRECTORY
 
 # model_type = MODEL_TYPE
@@ -37,31 +39,35 @@ def main():
         case "GPT4All":
             llm = GPT4All(model=model_path, n_ctx=model_n_ctx, backend='gptj', callbacks=callbacks, verbose=False)
         case "huggingface":
-            llm = AutoModel.from_pretrained(model_path, device_map="auto", trust_remote_code=True)
+            # llm = AutoModel.from_pretrained(model_path, device_map="auto", trust_remote_code=True)
+            llm = transformers.AutoModelForCausalLM.from_pretrained(
+            'mosaicml/mpt-7b',
+            trust_remote_code=True
+            )
         case _default:
             print(f"Model {model_type} not supported!")
             exit
     qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever, return_source_documents= not args.hide_source)
     # Interactive questions and answers
-    # while True:
-    #     query = input("\nEnter a query: ")
-    #     if query == "exit":
-    #         break
+    while True:
+        query = input("\nEnter a query: ")
+        if query == "exit":
+            break
 
-    #     # Get the answer from the chain
-    #     res = qa(query)
-    #     answer, docs = res['result'], [] if args.hide_source else res['source_documents']
+        # Get the answer from the chain
+        res = qa(query)
+        answer, docs = res['result'], [] if args.hide_source else res['source_documents']
 
-    #     # Print the result
-    #     print("\n\n> Question:")
-    #     print(query)
-    #     print("\n> Answer:")
-    #     print(answer)
+        # Print the result
+        print("\n\n> Question:")
+        print(query)
+        print("\n> Answer:")
+        print(answer)
 
-    #     # Print the relevant sources used for the answer
-    #     for document in docs:
-    #         print("\n> " + document.metadata["source"] + ":")
-    #         print(document.page_content)
+        # Print the relevant sources used for the answer
+        for document in docs:
+            print("\n> " + document.metadata["source"] + ":")
+            print(document.page_content)
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='privateGPT: Ask questions to your documents without an internet connection, '
