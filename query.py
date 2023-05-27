@@ -12,14 +12,14 @@ from langchain import HuggingFaceHub
 from transformers import AutoModel
 import transformers
 # mosaicml/mpt-7b
-embeddings_model_name =EMBEDDINGS_MODEL_NAME_VM
-# embeddings_model_name =EMBEDDINGS_MODEL_NAME
+# embeddings_model_name =EMBEDDINGS_MODEL_NAME_VM
+embeddings_model_name =EMBEDDINGS_MODEL_NAME
 persist_directory = PERSIST_DIRECTORY
 
-# model_type = MODEL_TYPE
-model_type = MODEL_TYPE_VM
-# model_path = MODEL_PATH
-model_path = MODEL_PATH_VM
+model_type = MODEL_TYPE
+# model_type = MODEL_TYPE_VM
+model_path = MODEL_PATH
+# model_path = MODEL_PATH_VM
 model_n_ctx = MODEL_N_CTX
 
 
