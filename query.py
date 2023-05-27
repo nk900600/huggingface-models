@@ -14,8 +14,8 @@ import pdb
 from langchain import HuggingFaceHub
 from langchain.llms import HuggingFacePipeline
 # mosaicml/mpt-7b
-# embeddings_model_name =EMBEDDINGS_MODEL_NAME_VM
-embeddings_model_name = EMBEDDINGS_MODEL_NAME
+embeddings_model_name =EMBEDDINGS_MODEL_NAME_VM
+# embeddings_model_name = EMBEDDINGS_MODEL_NAME
 persist_directory = PERSIST_DIRECTORY
 
 # model_type = MODEL_TYPE
