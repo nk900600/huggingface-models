@@ -4,7 +4,7 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.vectorstores import Chroma
 from langchain.llms import GPT4All, LlamaCpp
-from transformers import LlamaTokenizer, T5Tokenizer, AutoTokenizer,AutoModelForQuestionAnswering,BloomForCausalLM, T5ForConditionalGeneration, LlamaForCausalLM, GenerationConfig, pipeline, AutoModel, AutoModelForCausalLM
+from transformers import LlamaTokenizer, T5Tokenizer, AutoTokenizer,GPT2ForCausalLM,GPT2Tokenizer,AutoModelForQuestionAnswering,BloomForCausalLM, T5ForConditionalGeneration, LlamaForCausalLM, GenerationConfig, pipeline, AutoModel, AutoModelForCausalLM
 
 import os
 import argparse
@@ -38,6 +38,16 @@ MODEL_PARAMS_MAPPING = {
     "bigscience/bloom-560m" :{"task":"text-generation", 
                                     "token": AutoTokenizer, 
                                     "llm": BloomForCausalLM 
+                                    #LlamaForCausalLM  # T5ForConditionalGeneration
+                             },
+    "gpt2" :{"task":"text-generation", 
+                                    "token": AutoTokenizer, 
+                                    "llm": BloomForCausalLM 
+                                    #LlamaForCausalLM  # T5ForConditionalGeneration
+                             },
+    "gpt2-large" :{"task":"text-generation", 
+                                    "token": GPT2Tokenizer, 
+                                    "llm": GPT2ForCausalLM 
                                     #LlamaForCausalLM  # T5ForConditionalGeneration
                              },
 
