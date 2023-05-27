@@ -44,6 +44,7 @@ def main():
             'mosaicml/mpt-7b',
             trust_remote_code=True
             )
+            print("Model downloaded")
         case _default:
             print(f"Model {model_type} not supported!")
             exit
