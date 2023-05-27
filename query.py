@@ -139,7 +139,7 @@ def load_model():
         model=model,
         tokenizer=tokenizer,
         max_length=2048,
-        temperature=0,
+        temperature=0.1,
         top_p=0.95,
         repetition_penalty=1.15
     )
