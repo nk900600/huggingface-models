@@ -35,6 +35,12 @@ MODEL_PARAMS_MAPPING = {
                                     "llm": AutoModelForQuestionAnswering 
                                     #LlamaForCausalLM  # T5ForConditionalGeneration
                              },
+    "bigscience/bloom-560m" :{"task":"text-generation", 
+                                    "token": AutoTokenizer, 
+                                    "llm": LlamaForCausalLM 
+                                    #LlamaForCausalLM  # T5ForConditionalGeneration
+                             },
+
 }
 
 
