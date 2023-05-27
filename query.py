@@ -16,10 +16,10 @@ embeddings_model_name =EMBEDDINGS_MODEL_NAME_VM
 # embeddings_model_name =EMBEDDINGS_MODEL_NAME
 persist_directory = PERSIST_DIRECTORY
 
-model_type = MODEL_TYPE
-# model_type = MODEL_TYPE_VM
-model_path = MODEL_PATH
-# model_path = MODEL_PATH_VM
+# model_type = MODEL_TYPE
+model_type = MODEL_TYPE_VM
+# model_path = MODEL_PATH
+model_path = MODEL_PATH_VM
 model_n_ctx = MODEL_N_CTX
 
 
@@ -41,7 +41,7 @@ def main():
         case "huggingface":
             # llm = AutoModel.from_pretrained(model_path, device_map="auto", trust_remote_code=True)
             llm = transformers.AutoModelForCausalLM.from_pretrained(
-            'mosaicml/mpt-7b',
+            model_path,
             trust_remote_code=True
             )
             print("Model downloaded")
