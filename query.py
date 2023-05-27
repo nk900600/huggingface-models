@@ -48,7 +48,7 @@ def main():
         case _default:
             print(f"Model {model_type} not supported!")
             exit
-    qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever, return_source_documents= not args.hide_source)
+    qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=retriever, return_source_documents= True)
     # Interactive questions and answers
     while True:
         query = input("\nEnter a query: ")
