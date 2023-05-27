@@ -33,8 +33,8 @@ persist_directory = PERSIST_DIRECTORY
 source_directory = DOC_DIR
 # embeddings_model_name = EMBEDDINGS_MODEL_NAME
 embeddings_model_name = EMBEDDINGS_MODEL_NAME_VM
-chunk_size = 500
-chunk_overlap = 50
+chunk_size = 1000
+chunk_overlap = 200
 
 
 # Custom document loaders
