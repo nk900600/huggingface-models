@@ -11,7 +11,7 @@ import pdb
 from langchain import HuggingFaceHub
 from transformers import AutoModel
 # mosaicml/mpt-7b
-embeddings_model_name =EMBEDDINGS_MODEL_NAME
+embeddings_model_name =EMBEDDINGS_MODEL_NAME_VM
 persist_directory = PERSIST_DIRECTORY
 
 # model_type = MODEL_TYPE
@@ -37,7 +37,7 @@ def main():
         case "GPT4All":
             llm = GPT4All(model=model_path, n_ctx=model_n_ctx, backend='gptj', callbacks=callbacks, verbose=False)
         case "huggingface":
-            llm = AutoModel.from_pretrained(model_path, device_map="auto")
+            llm = AutoModel.from_pretrained(model_path, device_map="auto", trust_remote_code=True)
         case _default:
             print(f"Model {model_type} not supported!")
             exit
