@@ -47,7 +47,7 @@ MODEL_PARAMS_MAPPING = {
                              },
     "gpt2-large" :{"task":"text-generation", 
                                     "token": GPT2Tokenizer, 
-                                    "llm": GPT2ForCausalLM 
+                                    "llm": AutoModelForCausalLM 
                                     #LlamaForCausalLM  # T5ForConditionalGeneration
                              },
 
