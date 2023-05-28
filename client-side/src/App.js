@@ -59,15 +59,14 @@ function App() {
 
     if (!event.currentTarget && query) {
       setLoading(true);
-      let d = userList(query, true);
-      const newData = data.concat(d);
-      data = newData;
-      setChat(newData);
-
-
       postQuery(
         query,
         ({ ans, docs }) => {
+          let da = userList(query, true);
+          const newDatas = data.concat(da);
+          data = newDatas;
+          setChat(newDatas);
+
           let d = userList(
             `${ans}
           ------------Docs Refs--------------

@@ -20,8 +20,8 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, resources={r"*": {"origins": "*"}})
 
-# embeddings_model_name =EMBEDDINGS_MODEL_NAME_VM
-embeddings_model_name = EMBEDDINGS_MODEL_NAME
+embeddings_model_name =EMBEDDINGS_MODEL_NAME_VM
+# embeddings_model_name = EMBEDDINGS_MODEL_NAME
 persist_directory = PERSIST_DIRECTORY
 # request = ""
 # model_type = MODEL_TYPE
