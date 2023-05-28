@@ -20,3 +20,5 @@ transformers
 einops
 accelerate 
 xformers
+flask_cors
+flask

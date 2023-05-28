@@ -14,10 +14,16 @@ import pdb
 from langchain import HuggingFaceHub
 from langchain.llms import HuggingFacePipeline
 # mosaicml/mpt-7b
-embeddings_model_name =EMBEDDINGS_MODEL_NAME_VM
-# embeddings_model_name = EMBEDDINGS_MODEL_NAME
-persist_directory = PERSIST_DIRECTORY
+import json
+from flask import Flask, request
+from flask_cors import CORS
+app = Flask(__name__)
+CORS(app, resources={r"*": {"origins": "*"}})
 
+# embeddings_model_name =EMBEDDINGS_MODEL_NAME_VM
+embeddings_model_name = EMBEDDINGS_MODEL_NAME
+persist_directory = PERSIST_DIRECTORY
+# request = ""
 # model_type = MODEL_TYPE
 model_type = MODEL_TYPE_VM
 model_path = MODEL_PATH
@@ -86,29 +92,29 @@ def main():
         case _default:
             print(f"Model {model_type} not supported!")
             exit
-    qa = RetrievalQA.from_chain_type(
+    return RetrievalQA.from_chain_type(
         llm=llm, chain_type="stuff", retriever=retriever, return_source_documents=True)
     # Interactive questions and answers
-    while True:
-        query = input("\nEnter a query: ")
-        if query == "exit":
-            break
+    # while True:
+    #     query = input("\nEnter a query: ")
+    #     if query == "exit":
+    #         break
 
-        # Get the answer from the chain
-        res = qa(query)
-        answer, docs = res['result'], [
-        ] if args.hide_source else res['source_documents']
+    #     # Get the answer from the chain
+    #     res = qa(query)
+    #     answer, docs = res['result'], [
+    #     ] if args.hide_source else res['source_documents']
 
-        # Print the result
-        print("\n\n> Question:")
-        print(query)
-        print("\n> Answer:")
-        print(answer)
+    #     # Print the result
+    #     print("\n\n> Question:")
+    #     print(query)
+    #     print("\n> Answer:")
+    #     print(answer)
 
-        # Print the relevant sources used for the answer
-        for document in docs:
-            print("\n> " + document.metadata["source"] + ":")
-            print(document.page_content)
+    #     # Print the relevant sources used for the answer
+    #     for document in docs:
+    #         print("\n> " + document.metadata["source"] + ":")
+    #         print(document.page_content)
 
 
 def parse_arguments():
@@ -155,5 +161,52 @@ def load_model():
     return local_llm
 
 
+qa = main()
+
+def getQueryResponse(query):
+    res = qa(query)
+    answer, docs = res['result'], res['source_documents']
+
+    # Print the result
+    print("\n\n> Question:")
+    print(query)
+    print("\n> Answer:")
+    print(answer)
+
+    # Print the relevant sources used for the answer
+    docRef = ""
+
+    for document in docs:
+       docRef = docRef + "<br/> " + document.metadata["source"] + ": " + document.page_content
+    
+    return {"ans":answer, "docs":docRef}
+
+
+@app.route('/query', methods=['POST'])
+def retrieve_data():
+    data = request.get_json() # pylint: disable=E1101
+    print(data)
+    
+    return json.dumps(getQueryResponse(data["query"])) #"Content-Type": "application/json",
+
+
+
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    if 'file' not in request.files:
+        return 'No file part in the request'
+    
+    file = request.files['file']
+    
+    if file.filename == '':
+        return 'No file selected'
+    
+    # Save the file to a desired location
+    file.save('/docs/' + file.filename)
+    exec("./vectors.py")
+    return 'File uploaded successfully'
+
+
 if __name__ == "__main__":
-    main()
+    # main()
+    app.run(port=8888)
