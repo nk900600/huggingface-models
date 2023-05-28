@@ -161,9 +161,10 @@ def load_model():
     return local_llm
 
 
-qa = main()
+# qa = main()
 
 def getQueryResponse(query):
+    qa = main()
     res = qa(query)
     answer, docs = res['result'], res['source_documents']
 
@@ -190,7 +191,7 @@ def getRoot():
 def retrieve_data():
     data = request.get_json() # pylint: disable=E1101
     print(data)
-    
+   
     return json.dumps(getQueryResponse(data["query"])) #"Content-Type": "application/json",
 
 
