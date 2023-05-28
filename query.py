@@ -161,10 +161,7 @@ def load_model():
     return local_llm
 
 
-# qa = main()
-
 def getQueryResponse(query):
-    qa = main()
     res = qa(query)
     answer, docs = res['result'], res['source_documents']
 
@@ -214,4 +211,5 @@ def upload_file():
 
 if __name__ == "__main__":
     # main()
+    qa = main()
     app.run(host='0.0.0.0', debug=True, port=8888)
