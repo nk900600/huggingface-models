@@ -182,6 +182,10 @@ def getQueryResponse(query):
     return {"ans":answer, "docs":docRef}
 
 
+@app.route('/', methods=['GET'])
+def getRoot():
+    return "Hello"
+
 @app.route('/query', methods=['POST'])
 def retrieve_data():
     data = request.get_json() # pylint: disable=E1101
