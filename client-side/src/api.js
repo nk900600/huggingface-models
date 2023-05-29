@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-const baseUrl = "http://13.53.69.163:8888/";
+const baseUrl = "http://13.51.175.146:8888/";
 
 
 export const postQuery = (query, useCallback, errorCallback) => {
