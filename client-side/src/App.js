@@ -32,15 +32,15 @@ const props = {
   ],
 };
 let data = [
-  {
-    description:
-      "Ant Design, a design language for background applications, is refined by Ant UED TeamAnt Design, a design language for background applications, is refined by Ant UED TeamAnt Design, a design language for background applications, is refined by Ant UED TeamAnt Design, a design language for background applications, is refined by Ant UED TeamAnt Design, a design language for background applications, is refined by Ant UED TeamAnt Design, a design language for background applications, is refined by Ant UED Team",
-    src: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=1`,
-  },
-  {
-    description: "scscscsc",
-    src: botImage,
-  },
+  // {
+  //   description:
+  //     "Ant Design, a design language for background applications, is refined by Ant UED TeamAnt Design, a design language for background applications, is refined by Ant UED TeamAnt Design, a design language for background applications, is refined by Ant UED TeamAnt Design, a design language for background applications, is refined by Ant UED TeamAnt Design, a design language for background applications, is refined by Ant UED TeamAnt Design, a design language for background applications, is refined by Ant UED Team",
+  //   src: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=1`,
+  // },
+  // {
+  //   description: "scscscsc",
+  //   src: botImage,
+  // },
 ];
 
 function App() {
@@ -111,7 +111,7 @@ function App() {
               >
                 <Upload {...props}></Upload>
                 <div className="uploadeContainer">
-                  <Upload
+                  {/* <Upload
                     name="avatar"
                     listType="picture-card"
                     className="avatar-uploader"
@@ -121,7 +121,7 @@ function App() {
                     onChange={handleChange}
                   >
                     {uploadButton}
-                  </Upload>
+                  </Upload> */}
                 </div>
               </Card>
             </div>
