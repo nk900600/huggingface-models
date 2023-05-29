@@ -51,8 +51,8 @@ MODEL_PARAMS_MAPPING = {
                                     "llm": BloomForCausalLM 
                              },
     "gpt2" :{"task":"text-generation", 
-                                    "token": AutoTokenizer, 
-                                    "llm": BloomForCausalLM 
+                                    "token": GPT2Tokenizer, 
+                                    "llm": AutoModelForCausalLM 
                              },
     "gpt2-large" :{"task":"text-generation", 
                                     "token": GPT2Tokenizer, 
