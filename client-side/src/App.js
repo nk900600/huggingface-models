@@ -27,13 +27,7 @@ const props = {
       uid: "1",
       name: "Goku (anime series file)",
       status: "done",
-      url: "http://www.baidu.com/yyy.png",
-    },
-    {
-      uid: "2",
-      name: "yyy.png",
-      status: "done",
-      url: "http://www.baidu.com/yyy.png",
+      // url: "http://www.baidu.com/yyy.png",
     },
   ],
 };

@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 
-const baseUrl = "http://13.51.204.70:8888/";
+const baseUrl = "http://13.53.69.163:8888/";
+
 
 export const postQuery = (query, useCallback, errorCallback) => {
   fetch(`${baseUrl}/query`, {
